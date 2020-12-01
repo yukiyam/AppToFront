@@ -1,0 +1,62 @@
+AppToFront
+==========
+
+What's this?
+------------
+
+Brings all windows of an application to front (like when switching applications
+by Cmd-Tab or by clicking a dock icon) when the application's window is clicked 
+while it is in background.
+
+
+Supported OS Versions
+---------------------
+
+Theoretically, AppToFront can be built for any version of Mac OS X/macOS up to 
+11.0 Big Sur. However my PowerBook has crashed last summer so I have't tested it
+on a PowerPC machine...
+
+
+How to build
+------------
+
+I have confirmed that Xcode 6.4 to 12 builds the project with little to no 
+modifications.
+It will work with or without sandbox environment.
+
+AppToFront supports AppleScript. Running
+'''set enabled of app "AppToFront" to false'''
+will temporarily disable the app's functions.
+
+You can build it as a background application by setting Info.plist's LSUIElement
+to YES. In this case, run AppleScript 'tell app "AppToFront" to quit' when you
+want to quit the application.
+
+
+How to build on earlier systems
+-------------------------------
+
+If you can't open MainMenu.xib...
+
+1. Create a new MainMenu.xib/.nib.
+2. Make some decent main menu.
+3. Set the class of File's Owner to MyApplication or NSApplication.
+4. Add an AppDelegate object and connect it to File's Owner's delegate outlet.
+5. Save.
+
+Earlier Xcode/ProjectBuilder may not be able to open the project. If so,
+
+1. Make a new empty project.
+2. Add a Cocoa application target.
+3. Add files in AppToFront directory.
+4. Change build settings until it works correctly. 
+    - Specifically, you must turn off ARC if the option is available.
+
+To target Mac OS X 10.3 and earlier, you must make .scriptSuite/
+.scriptTerminology files from AppToFront.sdef. 'sdp' command may do the job but
+you must hand-generate them if it does not work. Read Cocoa Scripting Guide for 
+details.
+
+Have fun!
+
+2020.12.2
