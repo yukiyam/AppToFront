@@ -10,7 +10,7 @@
 
 #import <AvailabilityMacros.h>
 
-static OSStatus HandleAppSwitchEvent(EventHandlerRef caller, EventRef event, void *userData);
+static pascal OSStatus HandleAppSwitchEvent(EventHandlerRef caller, EventRef event, void *userData);
 static OSErr SendActivateToPID(pid_t pid);
 static OSErr SendActivateToPSN(const ProcessSerialNumber *psn);
 static Boolean ShouldFire(void);
@@ -33,7 +33,7 @@ static Boolean ShouldFire(void);
 		[NSApp terminate: self];
 	}
 #else
-#error "64-bit build requires Mac OS X SDK > 10.6."
+#error "64-bit build requires Mac OS X SDK >= 10.6."
 #endif
 }
 
@@ -64,7 +64,7 @@ static Boolean ShouldFire(void);
 @end
 
 
-static OSStatus HandleAppSwitchEvent(EventHandlerRef caller, EventRef event, void *userData)
+static pascal OSStatus HandleAppSwitchEvent(EventHandlerRef caller, EventRef event, void *userData)
 {
 	OSStatus st = noErr;
 #ifndef __LP64__
