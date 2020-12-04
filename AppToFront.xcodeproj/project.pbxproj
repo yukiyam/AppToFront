@@ -18,11 +18,11 @@
 /* Begin PBXFileReference section */
 		B615D9E525766B6C00A5DAE2 /* MyApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyApplication.h; sourceTree = "<group>"; };
 		B615D9E625766B6C00A5DAE2 /* MyApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyApplication.m; sourceTree = "<group>"; };
+		B615D9E82579C76F00A5DAE2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		B6C449AF2575DABD004047E6 /* AppToFront.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppToFront.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C449B22575DABD004047E6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B6C449B32575DABD004047E6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B6C449B52575DAC0004047E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B6C449B82575DAC0004047E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		B6C449BA2575DAC0004047E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6C449BB2575DAC0004047E6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B6C449BD2575DAC0004047E6 /* AppToFront.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppToFront.entitlements; sourceTree = "<group>"; };
@@ -112,7 +112,6 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 			);
 			mainGroup = B6C449A62575DABD004047E6;
 			productRefGroup = B6C449B02575DABD004047E6 /* Products */;
@@ -154,7 +153,7 @@
 		B6C449B72575DAC0004047E6 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B6C449B82575DAC0004047E6 /* Base */,
+				B615D9E82579C76F00A5DAE2 /* en */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
