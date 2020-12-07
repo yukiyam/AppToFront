@@ -40,7 +40,7 @@
 	<key>NSPrincipalClass</key>
 	<string>MyApplication</string>
 	<key>NSSupportsAutomaticTermination</key>
-	<true/>
+	<false/>
 	<key>NSSupportsSuddenTermination</key>
 	<true/>
 	<key>OSAScriptingDefinition</key>
