@@ -32,13 +32,18 @@
 }
 
 
+// assuming not sandboxed on systems < 10.7
 - (BOOL)isSandboxed
 {
+	BOOL sandboxed = NO;
+#if defined(MAC_OS_X_VERSION_10_7)
 	OSStatus        err;
 	SecCodeRef      me;
 	CFDictionaryRef dynamicInfo;
-	BOOL sandboxed = NO;
 
+	if (kSecCodeInfoEntitlementsDict == nil)	// requires 10.7
+		return NO;
+	
 	err = SecCodeCopySelf(kSecCSDefaultFlags, &me);
 	if (err == errSecSuccess) {
 		err = SecCodeCopySigningInformation(me, (SecCSFlags) kSecCSDynamicInformation, &dynamicInfo);
@@ -56,6 +61,7 @@
 		}
 		CFRelease(me);
 	}
+#endif
 	
 	return sandboxed;
 }
