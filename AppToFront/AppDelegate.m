@@ -48,8 +48,14 @@ static Boolean ShouldFire(void);
 - (void)gotActivateNotification: (NSNotification *)notification
 {
 	if (ShouldFire()) {
-		NSDictionary *userInfo = [notification userInfo];
-		NSRunningApplication *app = [userInfo objectForKey: NSWorkspaceApplicationKey];
+		//NSDictionary *userInfo = [notification userInfo];
+		//NSRunningApplication *app = [userInfo objectForKey: NSWorkspaceApplicationKey];
+		NSRunningApplication *app;
+		ProcessSerialNumber front;
+		pid_t pid;
+		GetFrontProcess(&front);
+		GetProcessPID(&front, &pid);
+		app = [NSRunningApplication runningApplicationWithProcessIdentifier: pid];
 		BOOL ok;
 		if ([NSApp isSandboxed]) {
 			// NSApplicationActivateAllWindows doesn't work since macOS 11.5 or so
