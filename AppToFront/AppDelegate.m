@@ -50,12 +50,24 @@ static Boolean ShouldFire(void);
 	if (ShouldFire()) {
 		NSDictionary *userInfo = [notification userInfo];
 		NSRunningApplication *app = [userInfo objectForKey: NSWorkspaceApplicationKey];
+		BOOL ok;
 		if ([NSApp isSandboxed]) {
-			[app activateWithOptions: NSApplicationActivateAllWindows + NSApplicationActivateIgnoringOtherApps];
+			// NSApplicationActivateAllWindows doesn't work since macOS 11.5 or so
+			//ok = [app activateWithOptions: NSApplicationActivateAllWindows + NSApplicationActivateIgnoringOtherApps];
+			ProcessSerialNumber psn;
+			OSStatus st;
+			st = GetProcessForPID([app processIdentifier], &psn);
+			st = SetFrontProcess(&psn);
+			ok = st == noErr;
 		}
 		else {
 			//SendActivateToPID([app processIdentifier]);
-			[app activateWithOptions: NSApplicationActivateAllWindows + NSApplicationActivateIgnoringOtherApps];
+			//ok = [app activateWithOptions: NSApplicationActivateAllWindows + NSApplicationActivateIgnoringOtherApps];
+			ProcessSerialNumber psn;
+			OSStatus st;
+			st = GetProcessForPID([app processIdentifier], &psn);
+			st = SetFrontProcess(&psn);
+			ok = st == noErr;
 		}
 	}
 }
